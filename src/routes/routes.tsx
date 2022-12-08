@@ -9,16 +9,30 @@ export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Root/>,
-        errorElement: <Error/>,
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home/>,
             },
             {
                 path: 'about',
                 element: <About/>
+            },
+            {
+                path: '*',
+                element: <Error/>
             }
         ]
     }
 ])
+
+export const links = [
+    {
+        "link": "/",
+        "label": "Home"
+    },
+    {
+        "link": "/about",
+        "label": "About"
+    },
+]

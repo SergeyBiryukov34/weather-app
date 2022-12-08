@@ -1,10 +1,11 @@
 import React from 'react';
+import {Container} from "@mantine/core";
 
 const About = () => {
     return (
-        <div>
+        <Container>
             About
-        </div>
+        </Container>
     );
 };
 
