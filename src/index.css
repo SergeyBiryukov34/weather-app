@@ -2,3 +2,12 @@
 .mantine-1hseney {
     z-index: 0;
 }
+
+.mantine-Autocomplete-rightSection {
+    padding: 0.3rem;
+}
+
+.mantine-List-itemWrapper {
+    width: 100%;
+    text-align: center;
+}

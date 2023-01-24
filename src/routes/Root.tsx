@@ -8,7 +8,7 @@ import {links} from "./routes";
 import AppHeader from "../components/AppHeader/AppHeader";
 import AppFooter from "../components/AppFooter/AppFooter";
 
-const Root = () => {
+export const Root = () => {
 
     const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
         key: 'mantine-color-scheme',
@@ -37,5 +37,3 @@ const Root = () => {
         </ColorSchemeProvider>
     );
 };
-
-export default Root;

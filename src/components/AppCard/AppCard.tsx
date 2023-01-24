@@ -1,5 +1,11 @@
-import { IconHeart } from '@tabler/icons';
-import { Card, Image, Text, Group, Badge, Button, ActionIcon, createStyles } from '@mantine/core';
+// Core
+import React, { useState } from 'react';
+import { Card, Image, Text, Group, Badge, Button, ActionIcon, createStyles, Stack } from '@mantine/core';
+// Interface
+import { IWeather } from '../../interface/IWeather';
+// Icons
+import { IconMapPin, IconTemperatureCelsius, IconTemperatureFahrenheit, IconWind, IconCloud } from '@tabler/icons';
+import {NavLink} from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -24,67 +30,83 @@ const useStyles = createStyles((theme) => ({
         fontSize: theme.fontSizes.xs,
         fontWeight: 700,
     },
+    link: {
+        textDecoration: 'none',
+        color: 'inherit'
+    }
 }));
 
-interface BadgeCardProps {
-    image: string;
-    title: string;
-    country: string;
-    description: string;
-    badges: {
-        emoji: string;
-        label: string;
-    }[];
-}
+export const AppCard = ({location, current}: IWeather) => {
 
-export function BadgeCard({ image, title, description, country, badges }: BadgeCardProps) {
     const { classes, theme } = useStyles();
 
-    const features = badges.map((badge) => (
-        <Badge
-            color={theme.colorScheme === 'dark' ? 'dark' : 'gray'}
-            key={badge.label}
-            leftSection={badge.emoji}
-        >
-            {badge.label}
-        </Badge>
-    ));
+    const { name, country, localtime } = location;
+    const { condition: {text, icon}, temp_c, temp_f, wind_kph, wind_mph, cloud } = current;
+
+    const [ temperature, setTemperature ] = useState(true);
+    const [ wind, setWind ] = useState(true);
+
 
     return (
         <Card withBorder radius="md" p="md" className={classes.card}>
-            <Card.Section>
-                <Image src={image} alt={title} height={180} />
-            </Card.Section>
 
-            <Card.Section className={classes.section} mt="md">
-                <Group position="apart">
-                    <Text size="lg" weight={500}>
-                        {title}
-                    </Text>
-                    <Badge size="sm">{country}</Badge>
+            <Card.Section withBorder inheritPadding py="xs" className={classes.section}>
+                <Group spacing="xs" position="apart">
+                    <Group spacing="xs">
+                        <IconMapPin size="20"/>
+
+                        <Text size="sm" weight={500}>
+                            {name}, {country}
+                        </Text>
+                    </Group>
+                    <Badge size="md">{localtime}</Badge>
                 </Group>
-                <Text size="sm" mt="xs">
-                    {description}
-                </Text>
             </Card.Section>
 
             <Card.Section className={classes.section}>
-                <Text mt="md" className={classes.label} color="dimmed">
-                    Perfect for you, if you enjoy
-                </Text>
-                <Group spacing={7} mt={5}>
-                    {features}
+               <Group position="center">
+                   <Stack align="center">
+                       <Image src={icon} alt={text}  height={80} width={80}/>
+                       <Text size="md" weight={500}>
+                           {text}
+                       </Text>
+
+                       <Group>
+                           <ActionIcon size={60} title="Switch degree type" onClick={() => setTemperature(!temperature)} >
+                               {temperature ? <><Text fz="lg" fw={700}>{temp_f}</Text><IconTemperatureFahrenheit size="20"/></> : <><Text fz="lg" fw={700}>{temp_c}</Text><IconTemperatureCelsius size="20"/></>}
+                           </ActionIcon>
+                       </Group>
+                   </Stack>
+
+               </Group>
+            </Card.Section>
+
+            <Card.Section className={classes.section}>
+                <Group position="apart" spacing="xs">
+                    <Group spacing="xs" mt="md">
+                        <IconWind size="20"/>
+                        <Text fz="sm">Wind:</Text>
+                        <ActionIcon title="Switch speed type" onClick={() => setWind(!wind)} size={60} >
+                            {wind ? <Text fz="sm">{wind_mph}mp/h</Text> : <Text fz="sm">{wind_kph}kp/h</Text>}
+                        </ActionIcon>
+                    </Group>
+
+                    <Group spacing="xs" mt="md">
+                        <IconCloud size="20"/>
+                        <Text fz="sm">Cloud:</Text>
+                        <Text fz="sm">{cloud}</Text>
+                    </Group>
                 </Group>
             </Card.Section>
 
             <Group mt="xs">
                 <Button radius="md" style={{ flex: 1 }}>
-                    Show details
+                    <NavLink className={classes.link} to={`detail/${name}`}>
+                        Show details
+                    </NavLink>
                 </Button>
-                <ActionIcon variant="default" radius="md" size={36}>
-                    <IconHeart size={18} className={classes.like} stroke={1.5} />
-                </ActionIcon>
             </Group>
+
         </Card>
     );
 }

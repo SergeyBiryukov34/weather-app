@@ -43,7 +43,7 @@ const useStyles = createStyles((theme) => ({
     }
 }));
 
-const Error = () => {
+export const Error = () => {
     const { classes } = useStyles();
 
     return (
@@ -64,5 +64,3 @@ const Error = () => {
         </Container>
     );
 }
-
-export default Error;

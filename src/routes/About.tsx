@@ -1,7 +1,10 @@
 import React from 'react';
 import {Container} from "@mantine/core";
 
-const About = () => {
+export const About = () => {
+
+
+
     return (
         <Container>
             About
@@ -9,4 +12,3 @@ const About = () => {
     );
 };
 
-export default About;

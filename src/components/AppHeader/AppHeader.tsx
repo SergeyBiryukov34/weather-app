@@ -117,9 +117,7 @@ const AppHeader = ({ links }: HeaderResponsiveProps) => {
                     <AppColorSchemeToggle/>
                 </Group>
 
-
-
-                <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+                <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm"/>
 
                 <Transition transition="pop-top-right" duration={200} mounted={opened}>
                     {(styles) => (
