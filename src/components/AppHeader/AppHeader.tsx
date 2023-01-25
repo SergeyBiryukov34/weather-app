@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {createStyles, Header, Container, Group, Burger, Paper, Transition, ActionIcon} from '@mantine/core';
+import {createStyles, Header, Container, Group, Burger, Paper, Transition, ActionIcon, Text} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NavLink } from "react-router-dom";
 import AppColorSchemeToggle from "../AppColorSchemeToggle/AppColorSchemeToggle";
@@ -49,6 +49,7 @@ const useStyles = createStyles((theme) => ({
     logo: {
         textDecoration: "none",
         color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+        textTransform: 'uppercase'
     },
 
     link: {
@@ -87,7 +88,7 @@ interface HeaderResponsiveProps {
 const AppHeader = ({ links }: HeaderResponsiveProps) => {
     const [opened, { toggle, close }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
-    const { classes, cx } = useStyles();
+    const { classes, cx, theme } = useStyles();
 
     const items = links.map((link) => (
         <NavLink
@@ -107,11 +108,10 @@ const AppHeader = ({ links }: HeaderResponsiveProps) => {
         <Header height={HEADER_HEIGHT} className={classes.root}>
             <Container className={classes.header}>
 
-                <ActionIcon>
-                    <NavLink className={classes.logo} onClick={() => setActive(links[0].link)} to='/'>
-                        LOGO
-                    </NavLink>
-                </ActionIcon>
+                <NavLink className={classes.logo} onClick={() => setActive(links[0].link)} to='/'>
+                   <Text fw={700} fz='lg' variant="gradient" gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}>Weather-App</Text>
+                </NavLink>
+
                 <Group spacing={5} className={classes.links}>
                     {items}
                     <AppColorSchemeToggle/>

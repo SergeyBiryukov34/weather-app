@@ -12,6 +12,7 @@ interface IGetWeatherProps {
     getWeather: ({name, day}:IGetWeather) => void
 }
 
+// Custom Styles
 const useStyles = createStyles((theme) => ({
     AutoCompleteItem: {
         cursor: 'pointer',
@@ -27,14 +28,19 @@ const useStyles = createStyles((theme) => ({
 
 export const AppSearch = ({getWeather}: IGetWeatherProps) => {
 
+    // Debounced Value from Autocomplete
     const [value, setValue] = useState('')
     const [debounced] = useDebouncedValue(value, 400)
+
+    // Using Custom Styles
     const { classes } = useStyles();
 
+    // RTK Query Hook From API
     const { data: cityList = null, isLoading, isFetching, isError } = useSearchByNameQuery(debounced, {
         skip: debounced.length < 2
     })
 
+    //
     const data = cityList !== null ? cityList.map((item) => ({ ...item, value: item.name })) : [];
 
     const AutoCompleteItem = forwardRef<HTMLDivElement, ISearch>(
@@ -53,6 +59,7 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
         )
     );
 
+
     const onSubmitName = (name: string) => {
 
         getWeather({name: name})
@@ -68,6 +75,7 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
             data={data}
             rightSection={isLoading || isFetching ? <Loader/> : null}
             error={isError ? <p>Something went wrong...</p> : null}
+            nothingFound={'Nothing Found'}
         />
     );
 }
