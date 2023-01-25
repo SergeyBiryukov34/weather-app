@@ -43,8 +43,8 @@ export const AppCard = ({location, current}: IWeather) => {
     const { name, country, localtime } = location;
     const { condition: {text, icon}, temp_c, temp_f, wind_kph, wind_mph, cloud } = current;
 
-    const [ temperature, setTemperature ] = useState(true);
-    const [ wind, setWind ] = useState(true);
+    const [ temperature, setTemperature ] = useState<boolean>(true);
+    const [ wind, setWind ] = useState<boolean>(true);
 
 
     return (

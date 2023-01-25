@@ -28,14 +28,14 @@ const useStyles = createStyles((theme) => ({
 export const AppSearch = ({getWeather}: IGetWeatherProps) => {
 
     const [value, setValue] = useState('')
-    const [debounced] = useDebouncedValue(value, 100)
+    const [debounced] = useDebouncedValue(value, 400)
     const { classes } = useStyles();
 
-    const { data: cityList = [], isLoading, isFetching, isError } = useSearchByNameQuery(value, {
-        skip: value.length < 1
+    const { data: cityList = null, isLoading, isFetching, isError } = useSearchByNameQuery(debounced, {
+        skip: debounced.length < 2
     })
 
-    const data = cityList.map((item) => ({ ...item, value: item.name }));
+    const data = cityList !== null ? cityList.map((item) => ({ ...item, value: item.name })) : [];
 
     const AutoCompleteItem = forwardRef<HTMLDivElement, ISearch>(
         ({ name, country, region }: ISearch, ref) => (
@@ -55,20 +55,19 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
 
     const onSubmitName = (name: string) => {
 
-        getWeather({name: name, day:1})
+        getWeather({name: name})
         setValue('')
     }
 
     return (
         <Autocomplete
-            value={debounced}
+            value={value}
             onChange={setValue}
             placeholder="Enter location name"
             itemComponent={AutoCompleteItem}
             data={data}
             rightSection={isLoading || isFetching ? <Loader/> : null}
             error={isError ? <p>Something went wrong...</p> : null}
-            nothingFound={<Loader variant='bars' />}
         />
     );
 }

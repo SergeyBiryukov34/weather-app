@@ -20,11 +20,6 @@ export const Home = () => {
 
     const [getWeather, {data: weather = null, isLoading, isFetching, isError}] = useLazyGetWeatherByNameQuery();
 
-    // const onSubmitName = (name: string) => {
-    //     getWeather({name, day: 1}, true)
-    //     setValue('')
-    // }
-
     const error = isError ? <p>Something went wrong...</p> : null
     const loading = isLoading || isFetching ? <Loader/> : null
     const content = weather !== null && !error && !loading ? <View forecast={weather.forecast} location={weather.location} current={weather.current}/> : <p>Enter the name of the city in the query string.</p>
