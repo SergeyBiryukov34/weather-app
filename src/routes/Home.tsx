@@ -27,7 +27,7 @@ export const Home = () => {
     return (
         <Container className={classes.hFull}>
             <Grid>
-                <Grid.Col span={12}>
+                <Grid.Col>
                     <AppSearch getWeather={getWeather}/>
                 </Grid.Col>
             </Grid>
@@ -42,7 +42,7 @@ export const Home = () => {
     function View ({location, forecast, current}: IWeather) {
 
         return (
-            <Grid.Col span={4}>
+            <Grid.Col span={12} xs={7} sm={6} md={4}>
                 <AppCard forecast={forecast} current={current} location={location} />
             </Grid.Col>
         )

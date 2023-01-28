@@ -1,5 +1,5 @@
 // Core
-import { forwardRef, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { useDebouncedValue } from '@mantine/hooks';
 import { Group, Text, Autocomplete, Loader, createStyles } from '@mantine/core';
 
@@ -10,6 +10,9 @@ import {IGetWeather, useSearchByNameQuery} from '../../store/weather/weather.api
 import { ISearch } from '../../interface/ISearch';
 interface IGetWeatherProps {
     getWeather: ({name, day}:IGetWeather) => void
+}
+interface IOnMouseDown extends ISearch {
+    onMouseDown: (e:  React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 // Custom Styles
@@ -28,27 +31,28 @@ const useStyles = createStyles((theme) => ({
 
 export const AppSearch = ({getWeather}: IGetWeatherProps) => {
 
-    // Debounced Value from Autocomplete
     const [value, setValue] = useState('')
     const [debounced] = useDebouncedValue(value, 400)
 
-    // Using Custom Styles
     const { classes } = useStyles();
 
-    // RTK Query Hook From API
     const { data: cityList = null, isLoading, isFetching, isError } = useSearchByNameQuery(debounced, {
         skip: debounced.length < 2
     })
 
-    //
     const data = cityList !== null ? cityList.map((item) => ({ ...item, value: item.name })) : [];
 
-    const AutoCompleteItem = forwardRef<HTMLDivElement, ISearch>(
-        ({ name, country, region }: ISearch, ref) => (
+
+    const AutoCompleteItem = forwardRef<HTMLDivElement, IOnMouseDown>(
+        ({ name, country, region, onMouseDown, ...others }: IOnMouseDown, ref) => (
             <div
                 ref={ref}
                 className={classes.AutoCompleteItem}
-                onClick={() => {onSubmitName(name)}}
+
+                onMouseDown={(e) => {
+                    onSubmitName(name)
+                    onMouseDown(e);
+                }}
             >
                 <Group noWrap>
                     <div>
