@@ -1,5 +1,6 @@
 import { createStyles, Title, Text, Button, Container, Group } from '@mantine/core';
 import {NavLink} from "react-router-dom";
+import {Helmet} from 'react-helmet';
 
 const useStyles = createStyles((theme) => ({
     root: {
@@ -48,6 +49,9 @@ export const Error = () => {
 
     return (
         <Container className={classes.root}>
+            <Helmet>
+                <title>Error</title>
+            </Helmet>
             <div className={classes.label}>404</div>
             <Title className={classes.title}>You have found a secret place.</Title>
             <Text color="dimmed" size="lg" align="center" className={classes.description}>

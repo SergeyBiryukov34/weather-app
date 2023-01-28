@@ -8,11 +8,6 @@ import { IWeather } from '../../interface/IWeather';
 // ApiKey
 const API_KEY = 'e2ed94edcea24f60a9f163255221103';
 
-export interface IGetWeather {
-    name: string,
-    day?: number
-}
-
 export const weatherApi = createApi({
     reducerPath: 'weather/api',
     baseQuery: fetchBaseQuery({
@@ -28,12 +23,12 @@ export const weatherApi = createApi({
             })
         }),
 
-        getWeatherByName: build.query<IWeather, IGetWeather>({
-            query: ({name = '', day = 1}) => ({
+        getWeatherByName: build.query<IWeather, string>({
+            query: (name) => ({
                 url: `forecast.json?key=${API_KEY}`,
                 params: {
                     q: name,
-                    days: day,
+                    days: 3,
                     aqi: 'no',
                     alerts: 'no',
                 }

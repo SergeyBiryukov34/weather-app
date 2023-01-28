@@ -1,5 +1,5 @@
 // Core
-import {Container, createStyles, Grid, Loader, Skeleton} from "@mantine/core";
+import {Container, createStyles, Grid, Loader} from "@mantine/core";
 // Components
 import { AppSearch } from "../components/AppSearch/AppSearch";
 import { AppCard } from '../components/AppCard/AppCard';
@@ -7,9 +7,10 @@ import { AppCard } from '../components/AppCard/AppCard';
 import { useLazyGetWeatherByNameQuery } from '../store/weather/weather.api';
 // Interface
 import { IWeather } from '../interface/IWeather';
-import React from 'react';
+import {Helmet} from "react-helmet"
 
-const useStyles = createStyles((theme) => ({
+
+const useStyles = createStyles(() => ({
     hFull: {
         height: '100%'
     }
@@ -20,12 +21,29 @@ export const Home = () => {
 
     const [getWeather, {data: weather = null, isLoading, isFetching, isError}] = useLazyGetWeatherByNameQuery();
 
-    const error = isError ? <p>Something went wrong...</p> : null
-    const loading = isLoading || isFetching ? <Loader/> : null
-    const content = weather !== null && !error && !loading ? <View forecast={weather.forecast} location={weather.location} current={weather.current}/> : <p>Enter the name of the city in the query string.</p>
+    const renderContent = () => {
+
+        if (isError) {
+            return <p>Something went wrong...</p>
+        }
+
+        if (isLoading || isFetching) {
+            return <Loader/>
+        }
+
+        if (weather !== null) {
+            return <View forecast={weather.forecast} location={weather.location} current={weather.current}/>
+        }
+
+        return <p>Enter the name of the city in the query string.</p>
+
+    }
 
     return (
         <Container className={classes.hFull}>
+            <Helmet>
+                <title>Weather App</title>
+            </Helmet>
             <Grid>
                 <Grid.Col>
                     <AppSearch getWeather={getWeather}/>
@@ -33,7 +51,9 @@ export const Home = () => {
             </Grid>
 
             <Grid className={classes.hFull} gutter='md' align="center" justify="center">
-                { content }
+
+                { renderContent() }
+
             </Grid>
         </Container>
     );

@@ -2,8 +2,10 @@ import React from 'react';
 import {ActionIcon, Anchor, Container, createStyles, Group, Image, Stack, Text} from "@mantine/core";
 
 import {IconBrandGithub, IconBrandReact, IconBrandRedux, IconBrandTypescript, IconBrandMantine} from '@tabler/icons'
+import {Helmet} from 'react-helmet';
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles(
+    ()=> ({
     inner: {
        display: 'flex',
        justifyContent: 'center',
@@ -15,8 +17,12 @@ export const About = () => {
 
     const {classes, theme} = useStyles()
 
+
     return (
         <Container className={classes.inner}>
+            <Helmet>
+                <title>About</title>
+            </Helmet>
             <Stack sx={{width: '100%', alignItems: 'center'}}>
 
                 <Group sx={{width: '100%', justifyContent: 'space-around'}}>

@@ -4,15 +4,16 @@ import { useDebouncedValue } from '@mantine/hooks';
 import { Group, Text, Autocomplete, Loader, createStyles } from '@mantine/core';
 
 // Api
-import {IGetWeather, useSearchByNameQuery} from '../../store/weather/weather.api'
+import {useSearchByNameQuery} from '../../store/weather/weather.api'
 
 // Interface
 import { ISearch } from '../../interface/ISearch';
 interface IGetWeatherProps {
-    getWeather: ({name, day}:IGetWeather) => void
+    getWeather: (name: string) => void
 }
-interface IOnMouseDown extends ISearch {
-    onMouseDown: (e:  React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+
+interface ISubmit extends ISearch {
+    onMouseDown: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 // Custom Styles
@@ -42,16 +43,15 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
 
     const data = cityList !== null ? cityList.map((item) => ({ ...item, value: item.name })) : [];
 
-
-    const AutoCompleteItem = forwardRef<HTMLDivElement, IOnMouseDown>(
-        ({ name, country, region, onMouseDown, ...others }: IOnMouseDown, ref) => (
+    const AutoCompleteItem = forwardRef<HTMLDivElement, ISubmit>(
+        ({ name, country,onMouseDown, region, ...others }: ISubmit, ref) => (
             <div
                 ref={ref}
                 className={classes.AutoCompleteItem}
-
                 onMouseDown={(e) => {
-                    onSubmitName(name)
-                    onMouseDown(e);
+                    getWeather(name)
+                    setValue('')
+                    onMouseDown(e)
                 }}
             >
                 <Group noWrap>
@@ -63,12 +63,6 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
         )
     );
 
-
-    const onSubmitName = (name: string) => {
-
-        getWeather({name: name})
-        setValue('')
-    }
 
     return (
         <Autocomplete
