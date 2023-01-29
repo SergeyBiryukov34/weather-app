@@ -1,9 +1,12 @@
-import {useState} from 'react';
+// Core
+import { useState } from 'react';
+import { Box, Group, Switch, Tabs, Text, Title } from '@mantine/core';
 
-import {Box, Group, Switch, Tabs, Text, Title} from '@mantine/core';
-import {IWeather} from '../../interface/IWeather';
-
+// Components
 import {AppTable} from '../AppTable/AppTable';
+
+// Interface
+import { IWeather } from '../../interface/IWeather';
 
 export const AppTabs = ({location, forecast}: IWeather) => {
 

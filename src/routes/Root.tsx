@@ -1,10 +1,11 @@
+// Core
 import React from 'react';
-import {Outlet} from "react-router-dom";
-import {AppShell, ColorSchemeProvider, MantineProvider, ColorScheme} from "@mantine/core";
-import {useHotkeys, useLocalStorage} from '@mantine/hooks';
-
+import { Outlet } from "react-router-dom";
+import { AppShell, ColorSchemeProvider, MantineProvider, ColorScheme } from "@mantine/core";
+import { useHotkeys, useLocalStorage } from '@mantine/hooks';
+// Route links
 import {links} from "./routes";
-
+// Components
 import AppHeader from "../components/AppHeader/AppHeader";
 import AppFooter from "../components/AppFooter/AppFooter";
 

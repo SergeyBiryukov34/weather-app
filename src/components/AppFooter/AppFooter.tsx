@@ -1,7 +1,6 @@
-import {createStyles, Footer, Container, Group, ActionIcon, Box, Text, Anchor, Image} from '@mantine/core';
-import {IconBrandInstagram, IconBrandTwitter, IconBrandYoutube} from "@tabler/icons";
-
-
+// Core
+import { createStyles, Footer, Container, Group, Text } from '@mantine/core';
+// Custom Styles
 const useStyles = createStyles((theme) => ({
     footer: {
         borderTop: `1px solid ${

@@ -1,8 +1,9 @@
-import {Forecastday, Hour} from '../../interface/IWeather';
+// Core
 import {Box, createStyles, Group, ScrollArea, Stack, Table, Tabs, Text} from '@mantine/core';
-
+//  Icons
 import { IconTemperatureCelsius as Celsius, IconTemperatureFahrenheit as Fahrenheit } from '@tabler/icons';
-import {log} from 'util';
+// Interface
+import { Forecastday } from '../../interface/IWeather';
 
 
 interface IWeatherProps extends Forecastday {
@@ -11,7 +12,7 @@ interface IWeatherProps extends Forecastday {
     timeEpoch: number
 }
 
-
+// Custom Styles
 const useStyles = createStyles(theme => ({
     cell: {
         textAlign: 'center'

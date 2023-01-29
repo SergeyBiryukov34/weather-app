@@ -1,7 +1,8 @@
-
-import {createStyles, Header, Container, Group, Burger, Paper, Transition, Text} from '@mantine/core';
+// Core
+import { createStyles, Header, Container, Group, Burger, Paper, Transition, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { NavLink } from "react-router-dom";
+// Components
 import AppColorSchemeToggle from "../AppColorSchemeToggle/AppColorSchemeToggle";
 
 const HEADER_HEIGHT = 60;

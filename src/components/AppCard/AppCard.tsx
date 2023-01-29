@@ -1,12 +1,12 @@
 // Core
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Card, Image, Text, Group, Badge, Button, ActionIcon, createStyles, Stack } from '@mantine/core';
 // Interface
 import { IWeather } from '../../interface/IWeather';
 // Icons
 import { IconMapPin, IconTemperatureCelsius, IconTemperatureFahrenheit, IconWind, IconCloud } from '@tabler/icons';
-import {NavLink} from 'react-router-dom';
-
+// Custom Styles
 const useStyles = createStyles((theme) => ({
     card: {
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
@@ -38,7 +38,7 @@ const useStyles = createStyles((theme) => ({
 
 export const AppCard = ({location, current}: IWeather) => {
 
-    const { classes, theme } = useStyles();
+    const { classes } = useStyles();
 
     const { name, country, localtime } = location;
     const { condition: {text, icon}, temp_c, temp_f, wind_kph, wind_mph, cloud } = current;

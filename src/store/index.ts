@@ -1,3 +1,4 @@
+// Core
 import { configureStore } from "@reduxjs/toolkit";
 import { weatherApi } from "./weather/weather.api";
 

@@ -4,12 +4,12 @@ import { useDebouncedValue } from '@mantine/hooks';
 import { Group, Text, Autocomplete, Loader, createStyles } from '@mantine/core';
 
 // Api
-import {useSearchByNameQuery} from '../../store/weather/weather.api'
+import { useSearchByNameQuery } from '../../store/weather/weather.api'
 
 // Interface
 import { ISearch } from '../../interface/ISearch';
 interface IGetWeatherProps {
-    getWeather: (name: string) => void
+    getWeather: (name: string, b: boolean) => void
 }
 
 interface ISubmit extends ISearch {
@@ -49,7 +49,7 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
                 ref={ref}
                 className={classes.AutoCompleteItem}
                 onMouseDown={(e) => {
-                    getWeather(name)
+                    getWeather(name, true)
                     setValue('')
                     onMouseDown(e)
                 }}

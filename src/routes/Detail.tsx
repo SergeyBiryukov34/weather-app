@@ -1,9 +1,13 @@
-import {useParams} from 'react-router-dom';
+// Core
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Container, Loader } from '@mantine/core';
+// React Helmet
+import { Helmet } from 'react-helmet';
+// Hook from API
 import { useLazyGetWeatherByNameQuery} from '../store/weather/weather.api';
-import {useEffect} from 'react';
-import {Container, Loader,} from '@mantine/core';
-import {AppTabs} from '../components/AppTabs/AppTabs';
-import {Helmet} from 'react-helmet';
+// Components
+import { AppTabs } from '../components/AppTabs/AppTabs';
 
 
 export function Detail() {
@@ -13,13 +17,9 @@ export function Detail() {
 
     useEffect(() => {
         if (name) {
-            getWeather(name)
+            getWeather(name, true)
         }
     }, [name])
-
-    // const error = isError && <p>Something went wrong...</p>
-    // const loading = (isLoading || isFetching) && <Loader/>
-    // const content = (weather !== null) &&  <AppTabs current={weather.current} location={weather.location} forecast={weather.forecast}/>
 
     const renderContent = () => {
 
@@ -38,11 +38,15 @@ export function Detail() {
     }
 
     return (
-        <Container sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+        <>
             <Helmet>
                 <title>Weather in {name}</title>
             </Helmet>
-            {renderContent()}
-        </Container>
+            <Container sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+                {renderContent()}
+            </Container>
+
+        </>
+
     )
 }

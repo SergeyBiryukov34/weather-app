@@ -1,5 +1,6 @@
+// Core
 import { createBrowserRouter } from "react-router-dom";
-
+// Components
 import { Root } from "./Root";
 import { Error } from "./Error";
 import { Home } from "./Home";

@@ -9,7 +9,7 @@ import { useLazyGetWeatherByNameQuery } from '../store/weather/weather.api';
 import { IWeather } from '../interface/IWeather';
 import {Helmet} from "react-helmet"
 
-
+//  Custom Styles
 const useStyles = createStyles(() => ({
     hFull: {
         height: '100%'
@@ -40,22 +40,27 @@ export const Home = () => {
     }
 
     return (
-        <Container className={classes.hFull}>
+        <>
             <Helmet>
                 <title>Weather App</title>
             </Helmet>
-            <Grid>
-                <Grid.Col>
-                    <AppSearch getWeather={getWeather}/>
-                </Grid.Col>
-            </Grid>
+            <Container className={classes.hFull}>
 
-            <Grid className={classes.hFull} gutter='md' align="center" justify="center">
+                <Grid>
+                    <Grid.Col>
+                        <AppSearch getWeather={getWeather}/>
+                    </Grid.Col>
+                </Grid>
 
-                { renderContent() }
+                <Grid className={classes.hFull} gutter='md' align="center" justify="center">
 
-            </Grid>
-        </Container>
+                    { renderContent() }
+
+                </Grid>
+            </Container>
+        </>
+
+
     );
 };
 
