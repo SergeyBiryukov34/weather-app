@@ -40,7 +40,7 @@ export const About = () => {
                         <Stack align='center'>
                             <Text fw={300} fz='xl'>Source code App</Text>
                             <ActionIcon size={36}>
-                                <Anchor title='GitHub' href='#' target='_blank' color='white'>
+                                <Anchor title='GitHub' href='https://github.com/SergeyBiryukov34/weather-app' target='_blank' color='white'>
                                     <IconBrandGithub width='100%' height='100%' color={theme.colors.gray[7]} />
                                 </Anchor>
                             </ActionIcon>
