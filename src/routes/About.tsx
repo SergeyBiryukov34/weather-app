@@ -76,7 +76,7 @@ export const About = () => {
                                     </ActionIcon>
 
                                     <ActionIcon size={64}>
-                                        <Anchor href='https://mantine.dev' target='_blank' title='Mantine.dev'>
+                                        <Anchor href='https://mantine.dev/' target='_blank' title='Mantine.dev'>
                                             <IconBrandMantine width='100%' height='100%' color={theme.colors.gray[7]}/>
                                         </Anchor>
                                     </ActionIcon>
