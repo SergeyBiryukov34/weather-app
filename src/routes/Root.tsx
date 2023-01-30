@@ -1,7 +1,7 @@
 // Core
-import React from 'react';
+import React, {Suspense} from 'react';
 import { Outlet } from "react-router-dom";
-import { AppShell, ColorSchemeProvider, MantineProvider, ColorScheme } from "@mantine/core";
+import { AppShell, ColorSchemeProvider, MantineProvider, ColorScheme, Loader } from "@mantine/core";
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 // Route links
 import {links} from "./routes";
@@ -32,7 +32,9 @@ export const Root = () => {
                         main: {backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0]},
                     })}
                 >
-                    <Outlet/>
+                    <Suspense fallback={<Loader />}>
+                        <Outlet/>
+                    </Suspense>
                 </AppShell>
             </MantineProvider>
         </ColorSchemeProvider>

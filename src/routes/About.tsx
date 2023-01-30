@@ -1,9 +1,9 @@
 // Core
-import { ActionIcon, Anchor, Container, createStyles, Group, Image, Stack, Text } from "@mantine/core";
+import { ActionIcon, Anchor, Container, createStyles, Group, Image, Stack, Text } from "@mantine/core"
 // Icons
 import { IconBrandGithub, IconBrandReact, IconBrandRedux, IconBrandTypescript, IconBrandMantine } from '@tabler/icons'
 // React Helmet
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet'
 
 const useStyles = createStyles(
     ()=> ({
@@ -14,7 +14,7 @@ const useStyles = createStyles(
     }
 }))
 
-export const About = () => {
+const About = () => {
 
     const {classes, theme} = useStyles()
 
@@ -103,3 +103,4 @@ export const About = () => {
     );
 };
 
+export default About

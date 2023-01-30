@@ -1,8 +1,8 @@
 // Core
-import { createStyles, Title, Text, Button, Container, Group } from '@mantine/core';
-import { NavLink } from "react-router-dom";
+import { createStyles, Title, Text, Button, Container, Group } from '@mantine/core'
+import { NavLink } from "react-router-dom"
 // React Helmet
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet'
 
 // Custom Styles
 const useStyles = createStyles((theme) => ({
@@ -45,10 +45,10 @@ const useStyles = createStyles((theme) => ({
         textDecoration: "none",
         color: theme.colorScheme === 'dark' ? theme.colors.gray[2] : theme.colors.dark[4],
     }
-}));
+}))
 
-export const Error = () => {
-    const { classes } = useStyles();
+const Error = () => {
+    const { classes } = useStyles()
 
     return (
         <>
@@ -74,5 +74,7 @@ export const Error = () => {
         </>
 
 
-    );
+    )
 }
+
+export default Error

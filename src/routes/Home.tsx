@@ -1,12 +1,12 @@
 // Core
-import {Container, createStyles, Grid, Loader} from "@mantine/core";
+import {Container, createStyles, Grid, Loader} from "@mantine/core"
 // Components
-import { AppSearch } from "../components/AppSearch/AppSearch";
-import { AppCard } from '../components/AppCard/AppCard';
+import { AppSearch } from "../components/AppSearch/AppSearch"
+import { AppCard } from '../components/AppCard/AppCard'
 // Api
-import { useLazyGetWeatherByNameQuery } from '../store/weather/weather.api';
+import { useLazyGetWeatherByNameQuery } from '../store/weather/weather.api'
 // Interface
-import { IWeather } from '../interface/IWeather';
+import { IWeather } from '../interface/IWeather'
 import {Helmet} from "react-helmet"
 
 //  Custom Styles
@@ -16,10 +16,10 @@ const useStyles = createStyles(() => ({
     }
 }))
 
-export const Home = () => {
-    const {classes} = useStyles();
+const Home = () => {
+    const {classes} = useStyles()
 
-    const [getWeather, {data: weather = null, isLoading, isFetching, isError}] = useLazyGetWeatherByNameQuery();
+    const [getWeather, {data: weather = null, isLoading, isFetching, isError}] = useLazyGetWeatherByNameQuery()
 
 
     return (
@@ -64,3 +64,4 @@ export const Home = () => {
         )
     }
 
+export default Home

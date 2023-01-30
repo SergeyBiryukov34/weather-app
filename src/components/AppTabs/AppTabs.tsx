@@ -8,7 +8,7 @@ import {AppTable} from '../AppTable/AppTable';
 // Interface
 import { IWeather } from '../../interface/IWeather';
 
-export const AppTabs = ({location, forecast}: IWeather) => {
+const AppTabs = ({location, forecast}: IWeather) => {
 
     const [activeTab, setActiveTab] = useState<string | null>(forecast.forecastday[0].date);
 
@@ -45,3 +45,5 @@ export const AppTabs = ({location, forecast}: IWeather) => {
         </Tabs>
     );
 }
+
+export default AppTabs;

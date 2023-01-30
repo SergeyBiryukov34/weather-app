@@ -1,16 +1,23 @@
 // Core
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom"
 // Components
-import { Root } from "./Root";
-import { Error } from "./Error";
-import { Home } from "./Home";
-import { About } from "./About";
-import { Detail } from './Detail';
+import { Root } from "./Root"
+// import { Error } from "./Error"
+// import { Home } from "./Home"
+// import { About } from "./About"
+// import { Detail } from './Detail'
+
+import React from 'react'
+
+const Error = React.lazy(() => import("./Error"))
+const Home = React.lazy(() => import("./Home"))
+const About = React.lazy(() => import("./About"))
+const Detail = React.lazy(() => import("./Detail"))
 
 export const routes = createBrowserRouter([
     {
         path: '/',
-        element: <Root/>,
+        element:<Root/>,
         children: [
             {
                 path: '/',
