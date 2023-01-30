@@ -43,12 +43,6 @@ export const AppTable = ({date, astro, day, hour, speed, degree, timeEpoch}: IWe
 
     const localTime = timeEpoch - 7200;
 
-    // render cell
-
-    // const Cell = (arr: Hour) => {
-    //
-    // }
-
     return (
         <Tabs.Panel value={date} key={date} pt="xs">
 

@@ -21,23 +21,6 @@ export const Home = () => {
 
     const [getWeather, {data: weather = null, isLoading, isFetching, isError}] = useLazyGetWeatherByNameQuery();
 
-    const renderContent = () => {
-
-        if (isError) {
-            return <p>Something went wrong...</p>
-        }
-
-        if (isLoading || isFetching) {
-            return <Loader/>
-        }
-
-        if (weather !== null) {
-            return <View forecast={weather.forecast} location={weather.location} current={weather.current}/>
-        }
-
-        return <p>Enter the name of the city in the query string.</p>
-
-    }
 
     return (
         <>
@@ -54,7 +37,15 @@ export const Home = () => {
 
                 <Grid className={classes.hFull} gutter='md' align="center" justify="center">
 
-                    { renderContent() }
+                    {
+                        isError
+                            ? <p>Something went wrong...</p>
+                            : (isLoading || isFetching)
+                                ? <Loader/>
+                                : (weather !== null)
+                                    ? <View forecast={weather.forecast} location={weather.location} current={weather.current}/>
+                                    : <p>Enter the name of the city in the query string.</p>
+                    }
 
                 </Grid>
             </Container>

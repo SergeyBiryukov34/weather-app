@@ -21,21 +21,6 @@ export function Detail() {
         }
     }, [name])
 
-    const renderContent = () => {
-
-        if (isError) {
-            return <p>Something went wrong...</p>
-        }
-
-        if (isLoading || isFetching) {
-            return <Loader/>
-        }
-
-        if (weather !== null) {
-            return <AppTabs forecast={weather.forecast} location={weather.location} current={weather.current}/>
-        }
-
-    }
 
     return (
         <>
@@ -43,7 +28,14 @@ export function Detail() {
                 <title>Weather in {name}</title>
             </Helmet>
             <Container sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
-                {renderContent()}
+                {
+                    isError
+                        ? <p>Something went wrong...</p>
+                        : (isLoading || isFetching) ? <Loader/>
+                            : (weather !== null)
+                                ? <AppTabs forecast={weather.forecast} location={weather.location} current={weather.current}/>
+                                : null
+                }
             </Container>
 
         </>

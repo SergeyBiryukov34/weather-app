@@ -18,12 +18,12 @@ export const About = () => {
 
     const {classes, theme} = useStyles()
 
-
     return (
         <>
             <Helmet>
                 <title>About</title>
             </Helmet>
+
             <Container className={classes.inner}>
 
                 <Stack sx={{width: '100%', alignItems: 'center'}}>
@@ -46,10 +46,6 @@ export const About = () => {
                             </ActionIcon>
                         </Stack>
                     </Group>
-
-
-
-
 
                     <Stack sx={{marginTop: '10rem', width: '100%'}} align='center'>
                         <Text fz='xl' fw={400} sx={{letterSpacing: '.1rem'}}>Developed with technologies:</Text>
@@ -84,6 +80,7 @@ export const About = () => {
                                             </Anchor>
                                         </ActionIcon>
                                     </Group>
+
                                 </Stack>
                             </Group>
 
@@ -98,13 +95,8 @@ export const About = () => {
                             </Group>
                         </Group>
 
-
-
-
                     </Stack>
                 </Stack>
-
-
 
             </Container>
         </>
