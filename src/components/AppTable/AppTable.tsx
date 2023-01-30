@@ -38,6 +38,7 @@ export const AppTable = ({date, astro, day, hour, speed, degree, timeEpoch}: IWe
     const {classes, theme} = useStyles();
 
     const hours = hour.filter(hour => +hour.time.slice(-5, -3) % 2 === 0)
+
     const {sunrise, sunset, moonset, moonrise, moon_phase, moon_illumination} = astro
     const {maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, totalprecip_mm, avghumidity, uv} = day
 

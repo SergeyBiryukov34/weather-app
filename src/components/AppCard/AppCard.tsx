@@ -1,7 +1,7 @@
 // Core
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Card, Image, Text, Group, Badge, Button, ActionIcon, createStyles, Stack } from '@mantine/core';
+import { Card, Image, Text, Group, Badge, ActionIcon, createStyles, Stack } from '@mantine/core';
 // Interface
 import { IWeather } from '../../interface/IWeather';
 // Icons
@@ -32,7 +32,13 @@ const useStyles = createStyles((theme) => ({
     },
     link: {
         textDecoration: 'none',
-        color: 'inherit'
+        color: theme.colors.gray[1],
+        width: '100%',
+        padding: '.5rem 0',
+        backgroundColor: theme.colors.blue[6],
+        textAlign: 'center',
+        borderRadius: '.5rem',
+        textTransform: 'uppercase'
     }
 }));
 
@@ -45,7 +51,6 @@ export const AppCard = ({location, current}: IWeather) => {
 
     const [ temperature, setTemperature ] = useState<boolean>(true);
     const [ wind, setWind ] = useState<boolean>(true);
-
 
     return (
         <Card withBorder radius="md" p="md" className={classes.card}>
@@ -100,11 +105,9 @@ export const AppCard = ({location, current}: IWeather) => {
             </Card.Section>
 
             <Group mt="xs">
-                <Button radius="md" style={{ flex: 1 }}>
-                    <NavLink className={classes.link} to={`detail/${name}`}>
-                        Show details
-                    </NavLink>
-                </Button>
+                <NavLink className={classes.link} to={`detail/${name}`}>
+                    Show details
+                </NavLink>
             </Group>
 
         </Card>
