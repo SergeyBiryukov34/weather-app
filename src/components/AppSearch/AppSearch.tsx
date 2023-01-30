@@ -12,10 +12,6 @@ interface IGetWeatherProps {
     getWeather: (name: string, b: boolean) => void
 }
 
-interface ISubmit extends ISearch {
-    onMouseDown: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-}
-
 // Custom Styles
 const useStyles = createStyles((theme) => ({
     AutoCompleteItem: {
@@ -43,16 +39,12 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
 
     const data = cityList !== null ? cityList.map((item) => ({ ...item, value: item.name })) : []
 
-    const AutoCompleteItem = forwardRef<HTMLDivElement, ISubmit>(
-        ({ name, country,onMouseDown, region, ...others }: ISubmit, ref) => (
+    const AutoCompleteItem = forwardRef<HTMLDivElement, ISearch>(
+        ({ name, country, region, ...others }: ISearch, ref) => (
             <div
                 ref={ref}
                 className={classes.AutoCompleteItem}
-                onMouseDown={(e) => {
-                    getWeather(name, true)
-                    onMouseDown(e)
-                    setValue('')
-                }}
+                {...others}
             >
                 <Group noWrap>
                     <div>
@@ -70,6 +62,11 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
             onChange={setValue}
             placeholder="Enter location name"
             itemComponent={AutoCompleteItem}
+            onItemSubmit={({name}) => {
+                console.log(name)
+                getWeather(name, true)
+                setValue('')
+            }}
             data={data}
             rightSection={isLoading || isFetching ? <Loader/> : null}
             error={isError ? <p>Something went wrong...</p> : null}
