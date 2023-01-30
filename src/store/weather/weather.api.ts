@@ -1,12 +1,12 @@
 // Core
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 // Interface
-import { ISearch } from '../../interface/ISearch';
-import { IWeather } from '../../interface/IWeather';
+import { ISearch } from '../../interface/ISearch'
+import { IWeather } from '../../interface/IWeather'
 
 // ApiKey
-const API_KEY = 'e2ed94edcea24f60a9f163255221103';
+const API_KEY = 'e2ed94edcea24f60a9f163255221103'
 
 export const weatherApi = createApi({
     reducerPath: 'weather/api',
@@ -37,4 +37,4 @@ export const weatherApi = createApi({
     })
 })
 
-export const {useSearchByNameQuery, useLazyGetWeatherByNameQuery} = weatherApi;
+export const {useSearchByNameQuery, useLazyGetWeatherByNameQuery} = weatherApi

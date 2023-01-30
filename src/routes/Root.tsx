@@ -1,13 +1,13 @@
 // Core
 import React, {Suspense} from 'react';
 import { Outlet } from "react-router-dom";
-import { AppShell, ColorSchemeProvider, MantineProvider, ColorScheme, Loader } from "@mantine/core";
+import {AppShell, ColorSchemeProvider, MantineProvider, ColorScheme, LoadingOverlay} from "@mantine/core";
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 // Route links
-import {links} from "./routes";
+import {links} from "./routes"
 // Components
-import AppHeader from "../components/AppHeader/AppHeader";
-import AppFooter from "../components/AppFooter/AppFooter";
+import AppHeader from "../components/AppHeader/AppHeader"
+import AppFooter from "../components/AppFooter/AppFooter"
 
 export const Root = () => {
 
@@ -17,9 +17,10 @@ export const Root = () => {
         getInitialValueInEffect: true,
     });
     const toggleColorScheme = (value?: ColorScheme) =>
-        setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+        setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
-    useHotkeys([['mod+J', () => toggleColorScheme()]]);
+    useHotkeys([['mod+J', () => toggleColorScheme()]])
+
 
     return (
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
@@ -32,11 +33,11 @@ export const Root = () => {
                         main: {backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0]},
                     })}
                 >
-                    <Suspense fallback={<Loader />}>
+                    <Suspense fallback={<LoadingOverlay visible={true} overlayBlur={2} />}>
                         <Outlet/>
                     </Suspense>
                 </AppShell>
             </MantineProvider>
         </ColorSchemeProvider>
-    );
-};
+    )
+}

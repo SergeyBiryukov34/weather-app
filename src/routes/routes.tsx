@@ -1,14 +1,9 @@
 // Core
 import { createBrowserRouter } from "react-router-dom"
+import React from 'react'
 // Components
 import { Root } from "./Root"
-// import { Error } from "./Error"
-// import { Home } from "./Home"
-// import { About } from "./About"
-// import { Detail } from './Detail'
-
-import React from 'react'
-
+// Lazy Components
 const Error = React.lazy(() => import("./Error"))
 const Home = React.lazy(() => import("./Home"))
 const About = React.lazy(() => import("./About"))

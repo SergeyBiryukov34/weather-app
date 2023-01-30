@@ -1,11 +1,11 @@
 // Core
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Card, Image, Text, Group, Badge, ActionIcon, createStyles, Stack } from '@mantine/core';
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Card, Image, Text, Group, Badge, ActionIcon, createStyles, Stack } from '@mantine/core'
 // Interface
-import { IWeather } from '../../interface/IWeather';
+import { IWeather } from '../../interface/IWeather'
 // Icons
-import { IconMapPin, IconTemperatureCelsius, IconTemperatureFahrenheit, IconWind, IconCloud } from '@tabler/icons';
+import { IconMapPin, IconTemperatureCelsius, IconTemperatureFahrenheit, IconWind, IconCloud } from '@tabler/icons'
 // Custom Styles
 const useStyles = createStyles((theme) => ({
     card: {
@@ -44,13 +44,13 @@ const useStyles = createStyles((theme) => ({
 
 export const AppCard = ({location, current}: IWeather) => {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
-    const { name, country, localtime } = location;
-    const { condition: {text, icon}, temp_c, temp_f, wind_kph, wind_mph, cloud } = current;
+    const { name, country, localtime } = location
+    const { condition: {text, icon}, temp_c, temp_f, wind_kph, wind_mph, cloud } = current
 
-    const [ temperature, setTemperature ] = useState<boolean>(true);
-    const [ wind, setWind ] = useState<boolean>(true);
+    const [ temperature, setTemperature ] = useState<boolean>(true)
+    const [ wind, setWind ] = useState<boolean>(true)
 
     return (
         <Card withBorder radius="md" p="md" className={classes.card}>

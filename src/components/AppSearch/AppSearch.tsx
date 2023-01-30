@@ -1,13 +1,13 @@
 // Core
-import React, { forwardRef, useState } from 'react';
-import { useDebouncedValue } from '@mantine/hooks';
-import { Group, Text, Autocomplete, Loader, createStyles } from '@mantine/core';
+import React, { forwardRef, useState } from 'react'
+import { useDebouncedValue } from '@mantine/hooks'
+import { Group, Text, Autocomplete, Loader, createStyles } from '@mantine/core'
 
 // Api
 import { useSearchByNameQuery } from '../../store/weather/weather.api'
 
 // Interface
-import { ISearch } from '../../interface/ISearch';
+import { ISearch } from '../../interface/ISearch'
 interface IGetWeatherProps {
     getWeather: (name: string, b: boolean) => void
 }
@@ -35,13 +35,13 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
     const [value, setValue] = useState('')
     const [debounced] = useDebouncedValue(value, 400)
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     const { data: cityList = null, isLoading, isFetching, isError } = useSearchByNameQuery(debounced, {
         skip: debounced.length < 2
     })
 
-    const data = cityList !== null ? cityList.map((item) => ({ ...item, value: item.name })) : [];
+    const data = cityList !== null ? cityList.map((item) => ({ ...item, value: item.name })) : []
 
     const AutoCompleteItem = forwardRef<HTMLDivElement, ISubmit>(
         ({ name, country,onMouseDown, region, ...others }: ISubmit, ref) => (
@@ -50,8 +50,8 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
                 className={classes.AutoCompleteItem}
                 onMouseDown={(e) => {
                     getWeather(name, true)
-                    setValue('')
                     onMouseDown(e)
+                    setValue('')
                 }}
             >
                 <Group noWrap>
@@ -61,7 +61,7 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
                 </Group>
             </div>
         )
-    );
+    )
 
 
     return (
@@ -75,5 +75,5 @@ export const AppSearch = ({getWeather}: IGetWeatherProps) => {
             error={isError ? <p>Something went wrong...</p> : null}
             nothingFound={'Nothing Found'}
         />
-    );
+    )
 }

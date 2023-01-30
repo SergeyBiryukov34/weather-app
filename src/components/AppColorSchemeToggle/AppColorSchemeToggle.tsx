@@ -1,10 +1,10 @@
 // Core
-import { useMantineColorScheme, ActionIcon, Group } from '@mantine/core';
+import { useMantineColorScheme, ActionIcon, Group } from '@mantine/core'
 // Icons
-import { IconSun, IconMoonStars } from '@tabler/icons';
+import { IconSun, IconMoonStars } from '@tabler/icons'
 
 const AppColorSchemeToggle = () => {
-    const {colorScheme, toggleColorScheme} = useMantineColorScheme();
+    const {colorScheme, toggleColorScheme} = useMantineColorScheme()
 
     return (
         <Group position="center" my="xl">
@@ -23,4 +23,4 @@ const AppColorSchemeToggle = () => {
     );
 }
 
-export default AppColorSchemeToggle;
+export default AppColorSchemeToggle

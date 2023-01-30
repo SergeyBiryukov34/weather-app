@@ -1,9 +1,9 @@
 // Core
-import { createStyles, Header, Container, Group, Burger, Paper, Transition, Text } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { NavLink } from "react-router-dom";
+import { createStyles, Header, Container, Group, Burger, Paper, Transition, Text } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import { NavLink } from "react-router-dom"
 // Components
-import AppColorSchemeToggle from "../AppColorSchemeToggle/AppColorSchemeToggle";
+import AppColorSchemeToggle from "../AppColorSchemeToggle/AppColorSchemeToggle"
 
 const HEADER_HEIGHT = 60;
 
@@ -83,12 +83,12 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface HeaderResponsiveProps {
-    links: { link: string; label: string }[];
+    links: { link: string; label: string }[]
 }
 
 const AppHeader = ({ links }: HeaderResponsiveProps) => {
-    const [opened, { toggle, close }] = useDisclosure(false);
-    const { classes } = useStyles();
+    const [opened, { toggle, close }] = useDisclosure(false)
+    const { classes } = useStyles()
 
 
     const items = links.map((link) => (
@@ -139,4 +139,4 @@ const AppHeader = ({ links }: HeaderResponsiveProps) => {
     );
 }
 
-export default AppHeader;
+export default AppHeader

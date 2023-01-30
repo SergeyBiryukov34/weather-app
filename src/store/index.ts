@@ -1,6 +1,6 @@
 // Core
-import { configureStore } from "@reduxjs/toolkit";
-import { weatherApi } from "./weather/weather.api";
+import { configureStore } from "@reduxjs/toolkit"
+import { weatherApi } from "./weather/weather.api"
 
 export const store = configureStore({
     reducer: {

@@ -1,5 +1,5 @@
 // Core
-import { createStyles, Footer, Container, Group, Text } from '@mantine/core';
+import { createStyles, Footer, Container, Group, Text } from '@mantine/core'
 // Custom Styles
 const useStyles = createStyles((theme) => ({
     footer: {
@@ -23,9 +23,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const AppFooter = () => {
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear()
 
     return (
         <Footer className={classes.footer} height={80}>
@@ -42,4 +42,4 @@ const AppFooter = () => {
     );
 }
 
-export default AppFooter;
+export default AppFooter

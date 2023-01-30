@@ -1,21 +1,21 @@
 // Core
-import { useState } from 'react';
-import { Box, Group, Switch, Tabs, Text, Title } from '@mantine/core';
+import { useState } from 'react'
+import { Box, Group, Switch, Tabs, Text, Title } from '@mantine/core'
 
 // Components
-import {AppTable} from '../AppTable/AppTable';
+import {AppTable} from '../AppTable/AppTable'
 
 // Interface
-import { IWeather } from '../../interface/IWeather';
+import { IWeather } from '../../interface/IWeather'
 
 const AppTabs = ({location, forecast}: IWeather) => {
 
-    const [activeTab, setActiveTab] = useState<string | null>(forecast.forecastday[0].date);
+    const [activeTab, setActiveTab] = useState<string | null>(forecast.forecastday[0].date)
 
     const [degree, setDegree] = useState<boolean>(true)
     const [speed, setSpeed] = useState<boolean>(true)
 
-    const days = forecast.forecastday;
+    const days = forecast.forecastday
 
     return (
         <Tabs value={activeTab} onTabChange={setActiveTab}>
@@ -43,7 +43,7 @@ const AppTabs = ({location, forecast}: IWeather) => {
                 })
             }
         </Tabs>
-    );
+    )
 }
 
-export default AppTabs;
+export default AppTabs

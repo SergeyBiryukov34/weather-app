@@ -52,16 +52,16 @@ const Home = () => {
         </>
 
 
-    );
-};
+    )
+}
 
-    function View ({location, forecast, current}: IWeather) {
+function View ({location, forecast, current}: IWeather) {
 
-        return (
-            <Grid.Col span={12} xs={7} sm={6} md={4}>
-                <AppCard forecast={forecast} current={current} location={location} />
-            </Grid.Col>
-        )
-    }
+    return (
+        <Grid.Col span={12} xs={7} sm={6} md={4}>
+            <AppCard forecast={forecast} current={current} location={location} />
+        </Grid.Col>
+    )
+}
 
 export default Home
