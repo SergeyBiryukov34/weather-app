@@ -3,9 +3,9 @@
 ### Приложение прогноза погоды.
 
 ###### Технологии:
-* [React Js](https://reactjs.org/) | 
-* [Redux](https://redux.js.org/) | 
-* [TypeScript](https://www.typescriptlang.org/) |
+* ###[React Js](https://reactjs.org/) 
+* [Redux](https://redux.js.org/) 
+* [TypeScript](https://www.typescriptlang.org/) 
 * [Mantine.dev](https://mantine.dev)
 
 ###### Использование:
